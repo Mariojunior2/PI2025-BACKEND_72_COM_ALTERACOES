@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/08/2025 às 21:57
+-- Tempo de geração: 08/08/2025 às 14:19
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.1.25
 
@@ -214,7 +214,9 @@ CREATE TABLE `notificacoes` (
 --
 
 INSERT INTO `notificacoes` (`id`, `title`, `message`, `date`, `time`, `type`, `priority`, `read`, `academicType`) VALUES
-(3, 'Material Disponível', 'O professor de Algoritmos disponibilizou o material para a próxima aula.', '2025-04-11', '16:20:00', 'materials', 'medium', 1, 'homework');
+(5, 'Novo Material Disponibilizado', 'Slides da aula 12 - Trigonometria disponíveis', '2025-08-08', '14:30:00', 'materials', 'high', 1, NULL),
+(6, 'Feriado Escolar', 'Dia 20 - Feriado municipal, não haverá aula', '2025-08-20', '00:00:00', 'calendar', 'low', 1, NULL),
+(7, 'Prova de Química', 'Prova bimestral capítulos 5-8 na próxima terça', '2025-08-12', '07:30:00', 'academic', 'high', 1, 'exam');
 
 -- --------------------------------------------------------
 
@@ -252,7 +254,8 @@ INSERT INTO `usuario` (`idusuario`, `matricula`, `idade`, `foto`, `email`, `nome
 (8, '2023007', 21, NULL, 'aluno7@email.com', 'Fernando Lima', '$2y$10$ExemploDeHashJKL', '2025-05-30 09:12:35', 'ativo', '2025-05-30 09:12:35', '2025-05-30 09:12:35', 0),
 (9, '2023008', 22, NULL, 'aluno8@email.com', 'Mariana Ribeiro', '$2y$10$ExemploDeHashMNO', '2025-05-30 09:12:35', 'ativo', '2025-05-30 09:12:35', '2025-05-30 09:12:35', 0),
 (10, '2023009', 19, NULL, 'aluno9@email.com', 'Ricardo Gomes', '$2y$10$ExemploDeHashPQR', '2025-05-30 09:12:35', 'ativo', '2025-05-30 09:12:35', '2025-05-30 09:12:35', 0),
-(11, 'U20256959', 0, NULL, 'mario.junior2@alunos.sc.senac.br', 'Mario Gonçalves', '$2y$10$iq7qXkniq8n0aE9m1xeEBeZHr/O.73LmsyHODFSKCv3HfMHvlz4Hm', '2025-07-04 09:12:24', 'ativo', '2025-07-04 09:12:24', '2025-08-07 08:34:35', 0);
+(11, 'U20256959', 0, NULL, 'mario.junior2@alunos.sc.senac.br', 'Mario Gonçalves', '$2y$10$iq7qXkniq8n0aE9m1xeEBeZHr/O.73LmsyHODFSKCv3HfMHvlz4Hm', '2025-07-04 09:12:24', 'ativo', '2025-07-04 09:12:24', '2025-08-07 08:34:35', 0),
+(12, 'U20250556', 0, NULL, 'asdrubal@gmail.com', 'asdrubal', '$2y$10$Yp9hyDURpT5/9EbSPuvR9uwt.UYM6ASUAZyXb/SZaTc2BI18eFpaK', '2025-08-08 08:20:18', 'ativo', '2025-08-08 08:20:18', '2025-08-08 08:20:18', 0);
 
 -- --------------------------------------------------------
 
@@ -307,7 +310,8 @@ CREATE TABLE `usuario_config` (
 INSERT INTO `usuario_config` (`id`, `usuario_id`, `bio`, `telefone`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Administrador do sistema com experiência em segurança de dados', '+55 11 91234-5678', '2025-07-09 17:49:50', '2025-07-09 17:49:50'),
 (2, 2, 'Professor de Banco de Dados com 10 anos de experiência', '+55 11 98765-4321', '2025-07-09 17:49:50', '2025-08-07 16:43:29'),
-(3, 11, 'homem masculino', '47988962224', '2025-07-14 17:01:40', '2025-08-07 19:56:44');
+(3, 11, 'homem masculino', '47988962224', '2025-07-14 17:01:40', '2025-08-07 19:56:44'),
+(4, 12, 'EU SOU O MAIOR ESTUDADOR DE SUPER PHP DO MUNDO ', '', '2025-08-08 11:21:50', '2025-08-08 11:21:53');
 
 -- --------------------------------------------------------
 
@@ -400,7 +404,8 @@ INSERT INTO `usuario_seguidores` (`seguidor_id`, `seguido_id`, `data_seguimento`
 (11, 4, '2025-08-07 16:10:15'),
 (11, 5, '2025-08-07 16:11:41'),
 (11, 6, '2025-08-07 16:11:26'),
-(11, 7, '2025-08-07 16:11:07');
+(11, 7, '2025-08-07 16:11:07'),
+(12, 11, '2025-08-08 08:22:52');
 
 --
 -- Índices para tabelas despejadas
@@ -530,13 +535,13 @@ ALTER TABLE `material_avaliacoes`
 -- AUTO_INCREMENT de tabela `notificacoes`
 --
 ALTER TABLE `notificacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idusuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `usuario_aparencia`
@@ -548,7 +553,7 @@ ALTER TABLE `usuario_aparencia`
 -- AUTO_INCREMENT de tabela `usuario_config`
 --
 ALTER TABLE `usuario_config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `usuario_notificacoes`
